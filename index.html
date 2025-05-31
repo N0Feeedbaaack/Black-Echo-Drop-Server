@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BLACK ECHO NODE | Audio Drop</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--
+    This is a mock-up page for an audio drops.
+    It features a glitch effect on the title,
+    a scanline effect for retro aesthetics,
+    and a glowing box around the content.
+    The audio player is styled to fit the theme.
+    ## remember to upladoad the engine to the server 138.199.229.114
+  -->
+  <style>
+    body {
+      background-color: #0a0f1c;
+      color: #d1d1d1;
+      font-family: 'Courier New', monospace;
+      padding: 2em;
+      text-align: center;
+    }
+
+    .glitch {
+      font-size: 3em;
+      color: #00ffcc;
+      position: relative;
+      display: inline-block;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      text-shadow: 0 0 4px #00ffcc, 0 0 8px #00ffcc;
+      animation: glitchSkew 1s infinite linear alternate;
+    }
+
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .glitch::before {
+      top: -2px;
+      color: #ff00c8;
+      clip: rect(0, 9999px, 20px, 0);
+      animation: glitchTop 1.5s infinite linear alternate;
+    }
+
+    .glitch::after {
+      top: 2px;
+      color: #00ffff;
+      clip: rect(10px, 9999px, 30px, 0);
+      animation: glitchBottom 1.2s infinite linear alternate;
+    }
+
+    @keyframes glitchTop {
+      0% { transform: translateX(0); clip: rect(0, 9999px, 10px, 0); }
+      20% { transform: translateX(-4px); }
+      40% { transform: translateX(4px); clip: rect(5px, 9999px, 15px, 0); }
+      60% { transform: translateX(-3px); }
+      80% { transform: translateX(5px); }
+      100% { transform: translateX(0); }
+    }
+
+    @keyframes glitchBottom {
+      0% { transform: translateX(0); clip: rect(20px, 9999px, 30px, 0); }
+      20% { transform: translateX(4px); }
+      40% { transform: translateX(-4px); clip: rect(25px, 9999px, 35px, 0); }
+      60% { transform: translateX(3px); }
+      80% { transform: translateX(-5px); }
+      100% { transform: translateX(0); }
+    }
+
+    @keyframes glitchSkew {
+      0% { transform: skew(1deg); }
+      100% { transform: skew(-1deg); }
+    }
+
+    .scanlines::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0px,
+        rgba(0, 0, 0, 0.05) 2px,
+        rgba(0, 0, 0, 0) 4px
+      );
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    .info {
+      color: #b380ff;
+      font-size: 0.95em;
+      margin-bottom: 2em;
+      text-shadow: 0 0 3px #b380ff;
+    }
+
+    audio {
+      width: 100%;
+      max-width: 600px;
+      filter: drop-shadow(0 0 3px #00ffcc);
+    }
+
+    footer {
+      margin-top: 3em;
+      font-size: 0.85em;
+      color: #555;
+      text-shadow: 0 0 2px #8800ff;
+    }
+
+    .glow-box {
+      border: 1px solid #00ffcc33;
+      padding: 2em;
+      border-radius: 12px;
+      background: linear-gradient(145deg, #0c1423, #0b0d1a);
+      box-shadow:
+        0 0 5px #00ffcc33,
+        0 0 20px #00ffcc22 inset,
+        0 0 10px #5500ff22;
+    }
+
+    ::selection {
+      background: #00ffcc;
+      color: #000;
+    }
+  </style>
+</head>
+<body class="scanlines">
+  <div class="glow-box">
+    <h1 class="glitch" data-text="[ NODE 07A ]">[ NODE 07A ]</h1>
+
+    <div class="info">
+      TIMESTAMP: 2025-05-24 18:17 UTC<br>
+      RELAY ID: a6db20ff7f-bx-delta
+    </div>
+
+    <audio controls>
+      <source src="audio/r.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+
+    <footer>
+      Black Echo • DropServer v2.9<br>
+      <code>echo://07A/audio/stream</code>
+    </footer>
+  </div>
+</body>
+</html>
