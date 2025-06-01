@@ -11,7 +11,6 @@ class CustomHandler(SimpleHTTPRequestHandler):
 
     def end_headers(self):
         self.send_header("X-Powered-By", "PHP/5.6.40")
-        self.send_header("Home-Sweet-Home", "j6nphmtl6mqayglcd5eir2jglayitbvqd3eprhiw2yyiv66ki2fonuid.onion")
         super().end_headers()
 
     def do_GET(self):
